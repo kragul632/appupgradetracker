@@ -16,17 +16,18 @@
     </select>
   </p>
 
-  <!-- New Comment Input -->
   <p>
     <strong>New Comment:</strong><br>
-    <textarea [(ngModel)]="newComment" rows="3" cols="50" placeholder="Enter your comment here..."></textarea>
+    <textarea [(ngModel)]="newComment" rows="4" cols="50" placeholder="Add a new comment"></textarea>
   </p>
-
-  <!-- Existing Comments Display -->
-  <p>
-    <strong>Existing Comments:</strong><br>
-    <textarea [value]="item.comments" rows="4" cols="50" readonly></textarea>
+  
+  <p *ngIf="item.comments">
+    <strong>Previous Comments:</strong><br>
+    <span *ngFor="let comment of item.comments.split('\n');">
+      {{ comment }}<br>
+    </span>
   </p>
+  
 
   <div class="button-group">
     <button (click)="saveChanges()">Save</button>

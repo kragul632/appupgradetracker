@@ -29,7 +29,15 @@
           {{ item.status }}
         </span>
       </td>
-      <td>{{ item.comments }}</td>
+      <td>
+        <ul style="padding-left: 16px; margin: 0;">
+          <li *ngFor="let comment of item.comments?.split('\n')">
+            {{ comment }}
+          </li>
+        </ul>
+      </td>
+      
+      
       <td>
         <button (click)="editItem(item)">Edit</button>
         <button (click)="deleteItem(item)">Delete</button>

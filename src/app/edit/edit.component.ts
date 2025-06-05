@@ -9,26 +9,32 @@ import { ViewdataService, ApplicationUpgrade } from '../services/viewdata.servic
 })
 export class EditComponent {
   item: ApplicationUpgrade;
-  newComment: string = ''; // ✅ Add this line here
+  newComment: string = '';
+  originalComments: string = '';
 
   constructor(private router: Router, private viewdataService: ViewdataService) {
     const nav = this.router.getCurrentNavigation();
     this.item = nav?.extras?.state?.['data'];
+    this.originalComments = this.item?.comments || '';
   }
 
   saveChanges(): void {
     if (this.item && this.item.apmId) {
       this.item.apmId = this.item.apmId.trim();
-  
+
       if (this.newComment.trim()) {
         const newEntry = this.newComment.trim();
-        const existing = this.item.comments?.trim() || '';
-        this.item.comments = existing ? `${newEntry}\n\n${existing}` : newEntry;
-      }
-      
-      console.log('Final comment string:', this.item.comments);
 
-  
+        // ✅ Add new comment on top of original comments with a newline
+        this.item.comments = this.originalComments
+        ? `${newEntry}\n${this.originalComments}`
+        : newEntry;
+      
+      // ✅ Update the originalComments after saving
+      this.originalComments = this.item.comments;
+      
+      }
+
       this.viewdataService.updateApplicationUpgrade(this.item.apmId, this.item).subscribe({
         next: () => {
           alert('Update successful!');
@@ -41,9 +47,6 @@ export class EditComponent {
       });
     }
   }
-  
-  
-  
 
   goToList(): void {
     this.router.navigate(['/viewdata']);

@@ -1,0 +1,8 @@
+.comment-display {
+    white-space: pre-line;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    background-color: #f9f9f9;
+  }
+  

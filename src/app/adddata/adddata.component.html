@@ -13,14 +13,20 @@
 
   <div class="form-group">
     <label>Digital Unit:</label>
-    <input type="text" [(ngModel)]="formData.digitalUnit" name="digitalUnit" required />
+    <select [(ngModel)]="formData.digitalUnit" name="digitalUnit" required class="form-control">
+      <option value="Digital M&S">Digital M&S</option>
+      <option value="Digital Tech">Digital Tech</option>
+      <option value="Digital GBU">Digital GBU</option>
+      <option value="Digital CF">Digital CF</option>
+    </select>
   </div>
-
+  
+    
+  
   <div class="form-group">
     <label>Upgrade Factory Arrival Date:</label>
     <input type="datetime-local" [(ngModel)]="formData.upgradeFactoryArrivalDate" name="upgradeFactoryArrivalDate" required />
   </div>
-
   <div class="form-group">
     <label>Planned PnP Date:</label>
     <input type="datetime-local" [(ngModel)]="formData.plannedPnPDate" name="plannedPnPDate" required />
@@ -31,7 +37,6 @@
     <select [(ngModel)]="formData.status" name="status" required>
       <option value="InProgress">InProgress</option>
       <option value="Pending">Pending</option>
-      <option value="Blocked">Blocked</option>
       <option value="Locked">Locked</option>
     </select>
   </div>
