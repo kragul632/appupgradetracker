@@ -16,9 +16,16 @@
     </select>
   </p>
 
+  <!-- New Comment Input -->
   <p>
-    <strong>Comments:</strong><br>
-    <textarea [(ngModel)]="item.comments" rows="4" cols="50"></textarea>
+    <strong>New Comment:</strong><br>
+    <textarea [(ngModel)]="newComment" rows="3" cols="50" placeholder="Enter your comment here..."></textarea>
+  </p>
+
+  <!-- Existing Comments Display -->
+  <p>
+    <strong>Existing Comments:</strong><br>
+    <textarea [value]="item.comments" rows="4" cols="50" readonly></textarea>
   </p>
 
   <div class="button-group">

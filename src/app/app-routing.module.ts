@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditComponent } from './edit/edit.component';
 import { ViewdataComponent } from './viewdata/viewdata.component';
 import { UploadComponent } from './upload/upload.component';
+import { AdddataComponent } from './adddata/adddata.component';
 
 const routes: Routes = [
     { path: 'upload', component: UploadComponent },
     { path: 'viewdata', component: ViewdataComponent },
     { path: 'edit', component: EditComponent },
+    { path: 'add', component: AdddataComponent }, 
     { path: '', redirectTo: '/viewdata', pathMatch: 'full' }
   ];
   

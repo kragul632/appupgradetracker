@@ -38,5 +38,20 @@ editItem(item: ApplicationUpgrade): void {
     }
   }
   
+getStatusClass(status: string): string {
+  if (!status) return '';
+  const normalized = status.toLowerCase().replace(/\s/g, '');
+  if (normalized === 'inprogress') {
+    return 'status-in-progress';
+  } else if (normalized === 'blocked') {
+    return 'status-blocked';
+  } else if (normalized === 'locked') {
+    return 'status-locked';
+  }
+  return '';
+}
+
+  
+  
   
 }

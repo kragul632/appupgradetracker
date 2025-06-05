@@ -1,0 +1,46 @@
+.upgrade-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.upgrade-table th {
+  background-color: #003366;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.upgrade-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.row-light-grey {
+  background-color: #d3d3d3;
+}
+
+.row-dark-grey {
+  background-color: #a9a9a9;
+}
+
+.status-in-progress {
+  background-color: #007bff; /* Blue */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.status-blocked {
+  background-color: orange; /* Orange */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.status-locked {
+  background-color: red; /* Red */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

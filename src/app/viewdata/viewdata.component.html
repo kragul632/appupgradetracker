@@ -1,25 +1,34 @@
-<h2>Application Upgrades</h2>
-<table border="1">
+<table class="upgrade-table">
   <thead>
     <tr>
+      <th>SL No.</th>
       <th>APM ID</th>
-      <th>Application Name</th>
+      <th>App Name</th>
       <th>Digital Unit</th>
       <th>Upgrade Factory Arrival Date</th>
-      <th>Planned PnP Date</th>
+      <th>Planned / Actual PS Completion Date</th>
       <th>Status</th>
       <th>Comments</th>
-      <th>Actions</th> <!-- New column -->
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of upgrades">
+    <tr *ngFor="let item of upgrades; let i = index"
+        [ngClass]="{
+          'row-light-grey': i % 2 === 0,
+          'row-dark-grey': i % 2 !== 0
+        }">
+      <td>{{ i + 1 }}</td>
       <td>{{ item.apmId }}</td>
       <td>{{ item.appName }}</td>
       <td>{{ item.digitalUnit }}</td>
-      <td>{{ item.upgradeFactoryArrivalDate | date: 'medium' }}</td>
-      <td>{{ item.plannedPnPDate | date: 'medium' }}</td>
-      <td>{{ item.status }}</td>
+      <td>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</td>
+      <td>{{ item.plannedPnPDate | date: 'mediumDate' }}</td>
+      <td>
+        <span [ngClass]="getStatusClass(item.status)">
+          {{ item.status }}
+        </span>
+      </td>
       <td>{{ item.comments }}</td>
       <td>
         <button (click)="editItem(item)">Edit</button>

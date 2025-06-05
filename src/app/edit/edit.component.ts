@@ -9,6 +9,7 @@ import { ViewdataService, ApplicationUpgrade } from '../services/viewdata.servic
 })
 export class EditComponent {
   item: ApplicationUpgrade;
+  newComment: string = ''; // ✅ Add this line here
 
   constructor(private router: Router, private viewdataService: ViewdataService) {
     const nav = this.router.getCurrentNavigation();
@@ -17,9 +18,16 @@ export class EditComponent {
 
   saveChanges(): void {
     if (this.item && this.item.apmId) {
-      this.item.apmId = this.item.apmId.trim(); // ✅ Trim the ID
+      this.item.apmId = this.item.apmId.trim();
   
-      console.log('Sending to backend:', this.item);
+      if (this.newComment.trim()) {
+        const newEntry = this.newComment.trim();
+        const existing = this.item.comments?.trim() || '';
+        this.item.comments = existing ? `${newEntry}\n\n${existing}` : newEntry;
+      }
+      
+      console.log('Final comment string:', this.item.comments);
+
   
       this.viewdataService.updateApplicationUpgrade(this.item.apmId, this.item).subscribe({
         next: () => {
@@ -33,12 +41,11 @@ export class EditComponent {
       });
     }
   }
+  
+  
+  
 
-  
-goToList(): void {
-      this.router.navigate(['/applications']); // Update with your actual route
-    }
-  
-  
-  
+  goToList(): void {
+    this.router.navigate(['/viewdata']);
+  }
 }

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { UploadComponent } from './upload/upload.component';
 import { HeaderComponent } from './header/header.component';
+import { AdddataComponent } from './adddata/adddata.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HeaderComponent } from './header/header.component';
     ViewdataComponent,
     EditComponent,
     UploadComponent,
-    HeaderComponent
+    HeaderComponent,
+    AdddataComponent
   ],
   imports: [
     BrowserModule,
