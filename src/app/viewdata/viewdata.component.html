@@ -1,0 +1,30 @@
+<h2>Application Upgrades</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>APM ID</th>
+      <th>Application Name</th>
+      <th>Digital Unit</th>
+      <th>Upgrade Factory Arrival Date</th>
+      <th>Planned PnP Date</th>
+      <th>Status</th>
+      <th>Comments</th>
+      <th>Actions</th> <!-- New column -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of upgrades">
+      <td>{{ item.apmId }}</td>
+      <td>{{ item.appName }}</td>
+      <td>{{ item.digitalUnit }}</td>
+      <td>{{ item.upgradeFactoryArrivalDate | date: 'medium' }}</td>
+      <td>{{ item.plannedPnPDate | date: 'medium' }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.comments }}</td>
+      <td>
+        <button (click)="editItem(item)">Edit</button>
+        <button (click)="deleteItem(item)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,19 @@
+<h2>Upload Application Upgrades</h2>
+
+<div style="margin-bottom: 1rem;">
+  <input type="file" (change)="onFileSelected($event)" accept=".csv" />
+  <button (click)="uploadFile()" [disabled]="!selectedFile || uploading">Upload</button>
+</div>
+
+<!-- Upload status messages -->
+<div *ngIf="uploading" style="color: blue;">
+  Uploading file, please wait...
+</div>
+
+<div *ngIf="uploadSuccess" style="color: green;">
+  Upload successful! Redirecting to view data...
+</div>
+
+<div *ngIf="uploadError" style="color: red;">
+  Upload failed. Please try again.
+</div>

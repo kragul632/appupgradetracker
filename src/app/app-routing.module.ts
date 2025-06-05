@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditComponent } from './edit/edit.component';
+import { ViewdataComponent } from './viewdata/viewdata.component';
+import { UploadComponent } from './upload/upload.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+    { path: 'upload', component: UploadComponent },
+    { path: 'viewdata', component: ViewdataComponent },
+    { path: 'edit', component: EditComponent },
+    { path: '', redirectTo: '/viewdata', pathMatch: 'full' }
+  ];
+  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

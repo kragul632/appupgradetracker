@@ -1,0 +1,28 @@
+<h2>Edit Application Upgrade</h2>
+
+<div *ngIf="item">
+  <p><strong>APM ID:</strong> {{ item.apmId }}</p>
+  <p><strong>Application Name:</strong> {{ item.appName }}</p>
+  <p><strong>Digital Unit:</strong> {{ item.digitalUnit }}</p>
+  <p><strong>Upgrade Factory Arrival Date:</strong> {{ item.upgradeFactoryArrivalDate | date: 'medium' }}</p>
+  <p><strong>Planned PnP Date:</strong> {{ item.plannedPnPDate | date: 'medium' }}</p>
+
+  <p>
+    <strong>Status:</strong>
+    <select [(ngModel)]="item.status">
+      <option value="InProgress">InProgress</option>
+      <option value="Pending">Pending</option>
+      <option value="Locked">Locked</option>
+    </select>
+  </p>
+
+  <p>
+    <strong>Comments:</strong><br>
+    <textarea [(ngModel)]="item.comments" rows="4" cols="50"></textarea>
+  </p>
+
+  <div class="button-group">
+    <button (click)="saveChanges()">Save</button>
+    <button (click)="goToList()">Back</button>
+  </div>
+</div>
