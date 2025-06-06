@@ -43,6 +43,10 @@ deleteApplicationUpgrade(apmId: string) {
     return this.http.delete(`https://localhost:7098/api/ApplicationUpgrades/${apmId}`);
   }
   
-    
+  downloadApplicationUpgrades(): Observable<Blob> {
+    const url = 'https://localhost:7098/api/ApplicationUpgrades/download';
+    return this.http.get(url, { responseType: 'blob' });
+  }
+  
   
 }

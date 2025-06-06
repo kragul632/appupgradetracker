@@ -1,12 +1,20 @@
-button {
-    margin-right: 1rem;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  button.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
+.header-nav {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-buttons button,
+.right-button button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.active {
+  background-color: #007bff;
+  color: white;
+}
