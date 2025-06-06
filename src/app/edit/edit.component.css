@@ -80,3 +80,14 @@ button:hover {
   text-decoration: line-through;
   color: #888;
 }
+
+/* New style to match input fields with span appearance */
+.readonly-style {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}

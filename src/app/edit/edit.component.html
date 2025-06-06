@@ -21,7 +21,7 @@
     <div *ngIf="originalUpgradeFactoryArrivalDate && originalUpgradeFactoryArrivalDate !== item.upgradeFactoryArrivalDate">
       <span class="strikethrough">{{ originalUpgradeFactoryArrivalDate | date: 'mediumDate' }}</span><br>
     </div>
-    <input type="date" [(ngModel)]="item.upgradeFactoryArrivalDate">
+    <input type="date" [(ngModel)]="item.upgradeFactoryArrivalDate" class="readonly-style">
   </div>
 
   <div class="form-group">
@@ -29,12 +29,12 @@
     <div *ngIf="originalPlannedPnPDate && originalPlannedPnPDate !== item.plannedPnPDate">
       <span class="strikethrough">{{ originalPlannedPnPDate | date: 'mediumDate' }}</span><br>
     </div>
-    <input type="date" [(ngModel)]="item.plannedPnPDate">
+    <input type="date" [(ngModel)]="item.plannedPnPDate" class="readonly-style">
   </div>
 
   <div class="form-group">
     <label>Status:</label>
-    <select [(ngModel)]="item.status">
+    <select [(ngModel)]="item.status" class="readonly-style">
       <option value="InProgress">InProgress</option>
       <option value="Pending">Pending</option>
       <option value="Locked">Locked</option>
@@ -43,7 +43,7 @@
 
   <div class="form-group">
     <label>New Comment:</label>
-    <textarea [(ngModel)]="newComment" rows="4" placeholder="Add a new comment"></textarea>
+    <textarea [(ngModel)]="newComment" rows="4" placeholder="Add a new comment" class="readonly-style"></textarea>
   </div>
 
   <div class="form-group" *ngIf="item.comments">
