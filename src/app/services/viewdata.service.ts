@@ -11,6 +11,11 @@ export interface ApplicationUpgrade {
     plannedPnPDate: string;
     status: string;
     comments: string;
+    
+
+    originalUpgradeFactoryArrivalDate?: string;
+    originalPlannedPnPDate?: string;
+
   }
   
 
