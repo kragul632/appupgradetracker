@@ -23,22 +23,20 @@
       <td>{{ item.appName }}</td>
       <td>{{ item.digitalUnit }}</td>
 
-      <!-- Upgrade Factory Arrival Date with strikethrough if original exists -->
+      <!-- Upgrade Factory Arrival Date -->
       <td>
-        <span *ngIf="item.originalUpgradeFactoryArrivalDate" class="strikethrough">
+        <div *ngIf="item.originalUpgradeFactoryArrivalDate" class="strikethrough">
           {{ item.originalUpgradeFactoryArrivalDate | date: 'mediumDate' }}
-        </span>
-        <span *ngIf="item.originalUpgradeFactoryArrivalDate">&nbsp;→&nbsp;</span>
-        <span>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</span>
+        </div>
+        <div>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</div>
       </td>
 
-      <!-- Planned / Actual PS Completion Date with strikethrough if original exists -->
+      <!-- Planned / Actual PS Completion Date -->
       <td>
-        <span *ngIf="item.originalPlannedPnPDate" class="strikethrough">
+        <div *ngIf="item.originalPlannedPnPDate" class="strikethrough">
           {{ item.originalPlannedPnPDate | date: 'mediumDate' }}
-        </span>
-        <span *ngIf="item.originalPlannedPnPDate">&nbsp;→&nbsp;</span>
-        <span>{{ item.plannedPnPDate | date: 'mediumDate' }}</span>
+        </div>
+        <div>{{ item.plannedPnPDate | date: 'mediumDate' }}</div>
       </td>
 
       <td>
