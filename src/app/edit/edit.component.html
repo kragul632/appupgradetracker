@@ -1,33 +1,53 @@
-<h2>Edit Application Upgrade</h2>
+<h2 class="form-title">Edit Application Upgrade</h2>
 
-<div *ngIf="item">
-  <p><strong>APM ID:</strong> {{ item.apmId }}</p>
-  <p><strong>Application Name:</strong> {{ item.appName }}</p>
-  <p><strong>Digital Unit:</strong> {{ item.digitalUnit }}</p>
-  <p><strong>Upgrade Factory Arrival Date:</strong> {{ item.upgradeFactoryArrivalDate | date: 'medium' }}</p>
-  <p><strong>Planned PnP Date:</strong> {{ item.plannedPnPDate | date: 'medium' }}</p>
+<div *ngIf="item" class="form-container">
+  <div class="form-group">
+    <label>APM ID:</label>
+    <span>{{ item.apmId }}</span>
+  </div>
 
-  <p>
-    <strong>Status:</strong>
+  <div class="form-group">
+    <label>Application Name:</label>
+    <span>{{ item.appName }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Digital Unit:</label>
+    <span>{{ item.digitalUnit }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Upgrade Factory Arrival Date:</label>
+    <span>{{ item.upgradeFactoryArrivalDate | date: 'medium' }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Planned PnP Date:</label>
+    <span>{{ item.plannedPnPDate | date: 'medium' }}</span>
+  </div>
+
+  <div class="form-group">
+    <label>Status:</label>
     <select [(ngModel)]="item.status">
       <option value="InProgress">InProgress</option>
       <option value="Pending">Pending</option>
       <option value="Locked">Locked</option>
     </select>
-  </p>
+  </div>
 
-  <p>
-    <strong>New Comment:</strong><br>
-    <textarea [(ngModel)]="newComment" rows="4" cols="50" placeholder="Add a new comment"></textarea>
-  </p>
-  
-  <p *ngIf="item.comments">
-    <strong>Previous Comments:</strong><br>
-    <span *ngFor="let comment of item.comments.split('\n');">
-      {{ comment }}<br>
-    </span>
-  </p>
-  
+  <div class="form-group">
+    <label>New Comment:</label>
+    <textarea [(ngModel)]="newComment" rows="4" placeholder="Add a new comment"></textarea>
+  </div>
+
+  <div class="form-group" *ngIf="item.comments">
+    <label>Previous Comments:</label>
+    <div class="comment-display">
+      <span *ngFor="let comment of item.comments.split('\n')">
+        {{ comment }}<br>
+      </span>
+    </div>
+  </div>
 
   <div class="button-group">
     <button (click)="saveChanges()">Save</button>
