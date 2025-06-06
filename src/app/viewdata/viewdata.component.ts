@@ -15,9 +15,11 @@ export class ViewdataComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewdataService.getApplicationUpgrades().subscribe(data => {
+      console.log('API Response:', data); // ✅ Add this line to inspect the data
       this.upgrades = data;
     });
   }
+  
 
   
 editItem(item: ApplicationUpgrade): void {

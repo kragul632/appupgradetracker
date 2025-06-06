@@ -22,13 +22,31 @@
       <td>{{ item.apmId }}</td>
       <td>{{ item.appName }}</td>
       <td>{{ item.digitalUnit }}</td>
-      <td>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</td>
-      <td>{{ item.plannedPnPDate | date: 'mediumDate' }}</td>
+
+      <!-- Upgrade Factory Arrival Date with strikethrough if original exists -->
+      <td>
+        <span *ngIf="item.originalUpgradeFactoryArrivalDate" class="strikethrough">
+          {{ item.originalUpgradeFactoryArrivalDate | date: 'mediumDate' }}
+        </span>
+        <span *ngIf="item.originalUpgradeFactoryArrivalDate">&nbsp;→&nbsp;</span>
+        <span>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</span>
+      </td>
+
+      <!-- Planned / Actual PS Completion Date with strikethrough if original exists -->
+      <td>
+        <span *ngIf="item.originalPlannedPnPDate" class="strikethrough">
+          {{ item.originalPlannedPnPDate | date: 'mediumDate' }}
+        </span>
+        <span *ngIf="item.originalPlannedPnPDate">&nbsp;→&nbsp;</span>
+        <span>{{ item.plannedPnPDate | date: 'mediumDate' }}</span>
+      </td>
+
       <td>
         <span [ngClass]="getStatusClass(item.status)">
           {{ item.status }}
         </span>
       </td>
+
       <td>
         <ul style="padding-left: 16px; margin: 0;">
           <li *ngFor="let comment of item.comments?.split('\n')">
@@ -36,8 +54,7 @@
           </li>
         </ul>
       </td>
-      
-      
+
       <td>
         <button (click)="editItem(item)">Edit</button>
         <button (click)="deleteItem(item)">Delete</button>

@@ -25,6 +25,17 @@ export class AdddataComponent {
 
   submitForm(): void {
     if (this.isFormValid()) {
+      // Format the comment with date if it's provided
+      if (this.formData.comments.trim()) {
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'short'
+        }).replace(' ', '-'); // e.g., "06-Jun"
+  
+        this.formData.comments = `${formattedDate}: ${this.formData.comments.trim()}`;
+      }
+  
       this.http.post('https://localhost:7098/api/ApplicationUpgrades', this.formData)
         .subscribe({
           next: () => {
@@ -43,6 +54,7 @@ export class AdddataComponent {
       this.successMessage = '';
     }
   }
+  
 
   isFormValid(): boolean {
     const { apmId, appName, digitalUnit, upgradeFactoryArrivalDate, plannedPnPDate, status } = this.formData;
