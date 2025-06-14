@@ -1,8 +1,22 @@
 <div class="container mt-4">
   <h3>Upload CSV</h3>
-  <input type="file" (change)="onFileSelected($event)" accept=".csv" class="form-control mb-3" />
-  <div class="alert alert-info" *ngIf="uploadResult">{{ uploadResult }}</div>
 
+  <!-- File input with ID for reset -->
+  <input type="file" id="csvInput" (change)="onFileSelected($event)" accept=".csv" class="form-control mb-3" />
+
+  <!-- Upload button -->
+  <button class="btn btn-primary" (click)="submitCsv()">Upload</button>
+
+  <!-- Upload result message -->
+  <div class="alert mt-3" [ngClass]="{
+    'alert-success': uploadResult.startsWith('✅'),
+    'alert-danger': uploadResult.startsWith('❌'),
+    'alert-warning': uploadResult.startsWith('⚠️')
+  }" *ngIf="uploadResult">
+    {{ uploadResult }}
+  </div>
+
+  <!-- Table to display submissions -->
   <table class="table table-bordered mt-4" *ngIf="submissions.length > 0">
     <thead>
       <tr>
@@ -15,7 +29,6 @@
         <th>End Date</th>
         <th>Total Hours</th>
         <th>Total Cost</th>
-        <th *ngFor="let monday of allMondays">{{ monday }}</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +42,6 @@
         <td>{{ sub.endDate | date }}</td>
         <td>{{ sub.totalEffortHours }}</td>
         <td>{{ sub.totalCost }}</td>
-        <td *ngFor="let monday of allMondays">{{ getEffort(sub, monday) }}</td>
       </tr>
     </tbody>
   </table>
