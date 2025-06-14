@@ -41,7 +41,7 @@
 
       <td>
         <span [ngClass]="getStatusClass(item.status)">
-          {{ item.status }}
+          {{ formatStatus(item.status) }}
         </span>
       </td>
 
@@ -54,8 +54,11 @@
       </td>
 
       <td>
-        <button (click)="editItem(item)">Edit</button>
-        <button (click)="deleteItem(item)">Delete</button>
+        <div class="action-buttons">
+          <button class="edit-button" (click)="editItem(item)">Edit</button>
+          <button class="delete-button" (click)="deleteItem(item)">Delete</button>
+
+        </div>
       </td>
     </tr>
   </tbody>

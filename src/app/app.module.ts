@@ -12,6 +12,8 @@ import { EditComponent } from './edit/edit.component';
 import { UploadComponent } from './upload/upload.component';
 import { HeaderComponent } from './header/header.component';
 import { AdddataComponent } from './adddata/adddata.component';
+import { EffortTableComponent } from './components/effort-table/effort-table.component';
+import { AddEffortComponent } from './components/add-effort/add-effort.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { AdddataComponent } from './adddata/adddata.component';
     EditComponent,
     UploadComponent,
     HeaderComponent,
-    AdddataComponent
+    AdddataComponent,
+    EffortTableComponent,
+    AddEffortComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,53 @@
+<h2>Add Effort Submission</h2>
+
+<form (ngSubmit)="submitEffort()" #effortForm="ngForm">
+  <!-- Application ID and Name -->
+  <label>Application ID:
+    <input [(ngModel)]="effortPayload.applicationId" name="applicationId" (change)="onApplicationIdChange()" required />
+  </label><br />
+
+  <label>App Name:
+    <input [(ngModel)]="effortPayload.appName" name="appName" required />
+  </label><br />
+
+  <!-- Resource ID and Name -->
+  <label>Resource ID:
+    <input [(ngModel)]="effortPayload.resourceId" name="resourceId" (change)="onResourceIdChange()" required />
+  </label><br />
+
+  <label>Resource Name:
+    <input [(ngModel)]="effortPayload.resourceName" name="resourceName" required />
+  </label><br />
+
+  <!-- Role Name and Rate -->
+  <label>Role Name:
+    <select [(ngModel)]="effortPayload.roleName" name="roleName" (change)="onRoleNameChange()" required>
+      <option value="" disabled selected>Select a role</option>
+      <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+    </select>
+  </label><br />
+
+  <label>Rate:
+    <input type="number" [(ngModel)]="effortPayload.rate" name="rate" required />
+  </label><br />
+
+  <!-- Start and End Dates -->
+  <label>Start Date:
+    <input type="date" [(ngModel)]="effortPayload.startDate" name="startDate" (change)="generateMondays()" required />
+  </label><br />
+
+  <label>End Date:
+    <input type="date" [(ngModel)]="effortPayload.endDate" name="endDate" (change)="generateMondays()" required />
+  </label><br />
+
+  <!-- Weekly Efforts -->
+  <h4>Weekly Efforts</h4>
+  <div *ngFor="let monday of mondays">
+    <label>{{ monday }}:
+      <input type="number" #effortInput (input)="addWeeklyEffort(monday, effortInput.valueAsNumber)" />
+    </label><br />
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="!effortForm.form.valid">Submit</button>
+</form>

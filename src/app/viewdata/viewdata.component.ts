@@ -52,6 +52,13 @@ getStatusClass(status: string): string {
   }
   return '';
 }
+formatStatus(status: string): string {
+  if (!status) return '';
+  return status
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before capital letters
+    .replace(/\s+/g, ' ')                // Normalize spaces
+    .trim();                             // Remove leading/trailing spaces
+}
 
   
   

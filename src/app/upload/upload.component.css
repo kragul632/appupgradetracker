@@ -1,0 +1,32 @@
+.upload-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    text-align: center;
+  }
+  
+  .upload-controls {
+    margin-bottom: 1rem;
+  }
+  
+  .status {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  .status.uploading {
+    color: blue;
+  }
+  
+  .status.success {
+    color: green;
+  }
+  
+  .status.error {
+    color: red;
+  }
+  
