@@ -1,36 +1,37 @@
-<div class="container mt-4">
-  <h3>Upload CSV</h3>
-  <input type="file" (change)="onFileSelected($event)" accept=".csv" class="form-control mb-3" />
-  <div class="alert alert-info" *ngIf="uploadResult">{{ uploadResult }}</div>
-
-  <table class="table table-bordered mt-4" *ngIf="submissions.length > 0">
-    <thead>
-      <tr>
-        <th>App ID</th>
-        <th>App Name</th>
-        <th>Resource ID</th>
-        <th>Resource Name</th>
-        <th>Role</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Total Hours</th>
-        <th>Total Cost</th>
-        <th *ngFor="let monday of allMondays">{{ monday }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let sub of submissions">
-        <td>{{ sub.applicationId }}</td>
-        <td>{{ sub.appName }}</td>
-        <td>{{ sub.resourceId }}</td>
-        <td>{{ sub.resourceName }}</td>
-        <td>{{ sub.roleName }}</td>
-        <td>{{ sub.startDate | date }}</td>
-        <td>{{ sub.endDate | date }}</td>
-        <td>{{ sub.totalEffortHours }}</td>
-        <td>{{ sub.totalCost }}</td>
-        <td *ngFor="let monday of allMondays">{{ getEffort(sub, monday) }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+  <h2>Effort Submissions</h2>
+  <button routerLink="/add-effort" class="btn btn-primary">Add New</button>
 </div>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Application ID</th>
+      <th>App Name</th>
+      <th>Resource Name</th>
+      <th>Role</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th *ngFor="let date of allMondays">{{ date | date: 'MMM d, y' }}</th>
+      <th>Rate</th>
+      <th>Total Effort Hours</th>
+      <th>Total Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sub of submissions">
+      <td>{{ sub.id }}</td>
+      <td>{{ sub.applicationId }}</td>
+      <td>{{ sub.appName }}</td>
+      <td>{{ sub.resourceName }}</td>
+      <td>{{ sub.roleName }}</td>
+      <td>{{ sub.startDate | date }}</td>
+      <td>{{ sub.endDate | date }}</td>
+      <td *ngFor="let date of allMondays">{{ getEffort(sub, date) }}</td>
+      <td>{{ sub.rate }}</td>
+      <td>{{ sub.totalEffortHours }}</td>
+      <td>{{ sub.totalCost }}</td>
+    </tr>
+  </tbody>
+</table>
