@@ -1,11 +1,17 @@
-<div class="upload-container">
-  <h2>Upload Application Upgrades</h2>
+<div class="upload-card">
+  <!-- Title -->
+  <h2 class="card-title">Upload Application Upgrades</h2>
 
-  <div class="upload-controls">
+  <!-- Upload controls with Back button -->
+  <div class="upload-controls-row">
     <input type="file" (change)="onFileSelected($event)" accept=".csv" />
     <button (click)="uploadFile()" [disabled]="!selectedFile || uploading">Upload</button>
+    <button class="back-button" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
   </div>
 
+  <!-- Status messages -->
   <div *ngIf="uploading" class="status uploading">Uploading file, please wait...</div>
   <div *ngIf="uploadSuccess" class="status success">Upload successful! Redirecting to view data...</div>
   <div *ngIf="uploadError" class="status error">Upload failed. Please try again.</div>

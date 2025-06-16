@@ -60,6 +60,16 @@ formatStatus(status: string): string {
     .trim();                             // Remove leading/trailing spaces
 }
 
+
+goToAddData() {
+    this.router.navigate(['/add']);
+  }
+  
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+  
+
   
   
   

@@ -1,13 +1,17 @@
-<div class="upload-container">
-    <h2>Upload Effort CSV</h2>
-  
-    <div class="upload-controls">
-      <input type="file" (change)="onFileSelected($event)" accept=".csv" />
-      <button (click)="submitCsv()" [disabled]="!selectedFile || uploading">Upload</button>
-    </div>
-  
-    <div *ngIf="uploading" class="status uploading">Uploading file, please wait...</div>
-    <div *ngIf="uploadSuccess" class="status success">Upload successful! Redirecting to Effort Table...</div>
-    <div *ngIf="uploadError" class="status error">Upload failed. Please try again.</div>
+<div class="upload-card">
+  <h2 class="card-title">Upload Effort CSV</h2>
+
+  <!-- Upload Controls with Back Button -->
+  <div class="upload-controls-row">
+    <input type="file" (change)="onFileSelected($event)" accept=".csv" />
+    <button (click)="submitCsv()" [disabled]="!selectedFile || uploading">Upload</button>
+    <button class="back-button" routerLink="/effort-table">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
   </div>
-  
+
+  <!-- Status Messages -->
+  <div *ngIf="uploading" class="status uploading">Uploading file, please wait...</div>
+  <div *ngIf="uploadSuccess" class="status success">Upload successful! Redirecting to Effort Table...</div>
+  <div *ngIf="uploadError" class="status error">Upload failed. Please try again.</div>
+</div>

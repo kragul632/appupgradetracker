@@ -4,6 +4,50 @@
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.table-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #004080;
+}
+
+
+.left-buttons,
+.right-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.add-button {
+  background-color: rgba(0, 64, 128, 0.85);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.add-button i {
+  margin-right: 6px;
+}
+
+.add-button:hover {
+  background-color: #0059b3;
 }
 
 .upgrade-table {
@@ -37,7 +81,8 @@ tr:last-child td {
   border-bottom: none;
 }
 
-tr td:last-child, th:last-child {
+tr td:last-child,
+th:last-child {
   border-right: none;
 }
 
@@ -47,6 +92,12 @@ tr td:last-child, th:last-child {
 
 .row-dark-grey {
   background-color: #e6e6e6;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #888;
+  font-style: italic;
 }
 
 .status-in-progress,
@@ -68,12 +119,6 @@ tr td:last-child, th:last-child {
 
 .status-locked {
   background-color: red;
-}
-
-.strikethrough {
-  text-decoration: line-through;
-  color: #888;
-  font-style: italic;
 }
 
 .action-buttons {
@@ -102,30 +147,14 @@ button:active {
   transform: scale(0.98);
 }
 
-@media (max-width: 768px) {
-  .layout-container {
-    padding: 0.5rem;
-  }
-
-  table th, table td {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-}
-
-/* Delete Button - Red with reduced transparency */
 button.delete-button {
-  background-color: rgba(220, 53, 69, 0.85); /* Bootstrap red with 85% opacity */
-  color: white;
+  background-color: rgba(220, 53, 69, 0.85);
 }
 
-/* Edit Button - Blue with reduced transparency */
 button.edit-button {
-  background-color: rgba(0, 64, 128, 0.85); /* Matching blue with 85% opacity */
-  color: white;
+  background-color: rgba(0, 64, 128, 0.85);
 }
 
-/* Shared styles for hover and active states */
 button.delete-button:hover,
 button.edit-button:hover {
   opacity: 1;
@@ -135,4 +164,27 @@ button.edit-button:hover {
 button.delete-button:active,
 button.edit-button:active {
   transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    padding: 1rem;
+  }
+
+  .upgrade-table th,
+  .upgrade-table td {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .left-buttons,
+  .right-buttons {
+    justify-content: space-between;
+  }
 }

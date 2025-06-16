@@ -55,4 +55,9 @@ export class EffortTableComponent implements OnInit {
     );
     return effort ? effort.effortHours : '-';
   }
+
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+  
 }

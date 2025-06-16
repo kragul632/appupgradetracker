@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.css']  
 })
 export class UploadComponent {
   selectedFile: File | null = null;
@@ -45,4 +46,10 @@ export class UploadComponent {
         }
       });
   }
+
+  
+goBack() {
+    this.router.navigate(['/viewdata']);
+  }
+  
 }

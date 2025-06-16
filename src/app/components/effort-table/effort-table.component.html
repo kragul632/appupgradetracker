@@ -1,11 +1,18 @@
 <div class="effort-container">
+  <!-- Header bar with back, title, and add buttons -->
   <div class="header-bar">
-    <h2>Effort Submissions</h2>
-    <a>
-      <button type="button" [routerLink]="['/add-effort']" class="btn btn-primary">Add New</button>
-    </a>
+    <button type="button" class="btn btn-primary back-button" (click)="goToHome()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <h2 class="table-title">Effort Submissions</h2>
+
+    <button type="button" [routerLink]="['/add-effort']" class="btn btn-primary add-button">
+      <i class="fas fa-plus"></i> Add New
+    </button>
   </div>
 
+  <!-- Table -->
   <div class="table-scroll">
     <table class="table-container">
       <thead>

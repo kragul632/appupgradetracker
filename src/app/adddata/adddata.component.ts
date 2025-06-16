@@ -72,4 +72,9 @@ export class AdddataComponent {
       comments: ''
     };
   }
+  
+goBack() {
+    this.router.navigate(['/viewdata']);
+  }
+  
 }

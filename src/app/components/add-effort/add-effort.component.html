@@ -1,6 +1,4 @@
-<div class="form-wrapper">
-  <a [routerLink]="['/effort-table']" class="back-button">← Back</a>
-
+<div class="effort-container">
   <h2 class="form-title">Add Effort Submission</h2>
 
   <form (ngSubmit)="submitEffort()" #effortForm="ngForm" class="effort-form">
@@ -51,7 +49,12 @@
       </label>
     </div>
 
-    <!-- Submit Button -->
-    <button type="submit" [disabled]="!effortForm.form.valid" class="submit-btn">Submit</button>
+    <!-- Submit and Back Buttons -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="!effortForm.form.valid" class="btn btn-primary">Submit</button>
+      <a [routerLink]="['/effort-table']" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
   </form>
 </div>

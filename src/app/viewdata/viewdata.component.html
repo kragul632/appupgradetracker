@@ -1,68 +1,80 @@
+<div class="table-container">
+  <!-- Header with Go Back and Add New buttons -->
+  <div class="table-header">
+    <div class="left-buttons">
+      <button class="add-button" (click)="goToHome()">
+        <i class="fas fa-arrow-left"></i> Go Back
+      </button>
+    </div>
+    
+<!-- Center Title -->
+  <div class="table-title">
+      Application Upgrades/PNP
+    </div>
+  
+    <div class="right-buttons">
+      <button class="add-button" (click)="goToAddData()">
+        <i class="fas fa-plus"></i> Add New
+      </button>
+    </div>
+  </div>
 
-
-
-<table class="upgrade-table">
-  <thead>
-    <tr>
-      <th>SL No.</th>
-      <th>APM ID</th>
-      <th>App Name</th>
-      <th>Digital Unit</th>
-      <th>Upgrade Factory Arrival Date</th>
-      <th>Planned / Actual PS Completion Date</th>
-      <th>Status</th>
-      <th>Comments</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of upgrades; let i = index"
-        [ngClass]="{
-          'row-light-grey': i % 2 === 0,
-          'row-dark-grey': i % 2 !== 0
-        }">
-      <td>{{ i + 1 }}</td>
-      <td>{{ item.apmId }}</td>
-      <td>{{ item.appName }}</td>
-      <td>{{ item.digitalUnit }}</td>
-
-      <!-- Upgrade Factory Arrival Date -->
-      <td>
-        <div *ngIf="item.originalUpgradeFactoryArrivalDate" class="strikethrough">
-          {{ item.originalUpgradeFactoryArrivalDate | date: 'mediumDate' }}
-        </div>
-        <div>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</div>
-      </td>
-
-      <!-- Planned / Actual PS Completion Date -->
-      <td>
-        <div *ngIf="item.originalPlannedPnPDate" class="strikethrough">
-          {{ item.originalPlannedPnPDate | date: 'mediumDate' }}
-        </div>
-        <div>{{ item.plannedPnPDate | date: 'mediumDate' }}</div>
-      </td>
-
-      <td>
-        <span [ngClass]="getStatusClass(item.status)">
-          {{ formatStatus(item.status) }}
-        </span>
-      </td>
-
-      <td>
-        <ul style="padding-left: 16px; margin: 0;">
-          <li *ngFor="let comment of item.comments?.split('\n')">
-            {{ comment }}
-          </li>
-        </ul>
-      </td>
-
-      <td>
-        <div class="action-buttons">
-          <button class="edit-button" (click)="editItem(item)">Edit</button>
-          <button class="delete-button" (click)="deleteItem(item)">Delete</button>
-
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Existing table -->
+  <table class="upgrade-table">
+    <thead>
+      <tr>
+        <th>SL No.</th>
+        <th>APM ID</th>
+        <th>App Name</th>
+        <th>Digital Unit</th>
+        <th>Upgrade Factory Arrival Date</th>
+        <th>Planned / Actual PS Completion Date</th>
+        <th>Status</th>
+        <th>Comments</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of upgrades; let i = index"
+          [ngClass]="{
+            'row-light-grey': i % 2 === 0,
+            'row-dark-grey': i % 2 !== 0
+          }">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.apmId }}</td>
+        <td>{{ item.appName }}</td>
+        <td>{{ item.digitalUnit }}</td>
+        <td>
+          <div *ngIf="item.originalUpgradeFactoryArrivalDate" class="strikethrough">
+            {{ item.originalUpgradeFactoryArrivalDate | date: 'mediumDate' }}
+          </div>
+          <div>{{ item.upgradeFactoryArrivalDate | date: 'mediumDate' }}</div>
+        </td>
+        <td>
+          <div *ngIf="item.originalPlannedPnPDate" class="strikethrough">
+            {{ item.originalPlannedPnPDate | date: 'mediumDate' }}
+          </div>
+          <div>{{ item.plannedPnPDate | date: 'mediumDate' }}</div>
+        </td>
+        <td>
+          <span [ngClass]="getStatusClass(item.status)">
+            {{ formatStatus(item.status) }}
+          </span>
+        </td>
+        <td>
+          <ul style="padding-left: 16px; margin: 0;">
+            <li *ngFor="let comment of item.comments?.split('\n')">
+              {{ comment }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <div class="action-buttons">
+            <button class="edit-button" (click)="editItem(item)">Edit</button>
+            <button class="delete-button" (click)="deleteItem(item)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
