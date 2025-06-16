@@ -1,25 +1,26 @@
 <nav class="header-nav">
   <div class="left-section">
-    <img 
-      src="https://companieslogo.com/img/orig/SNY_BIG.D-95ef01ab.png?t=1720244494" 
-      alt="Sanofi Logo" 
-      class="logo" 
-    />
-    <div class="page-title"></div>
-    <span class="separator">|</span>
+    <!-- Make logo clickable and route to home -->
+    <a routerLink="/" class="logo-link">
+      <img 
+        src="https://companieslogo.com/img/orig/SNY_BIG.D-95ef01ab.png?t=1720244494" 
+        alt="Sanofi Logo" 
+        class="logo"
+      />
+    </a>
+
+    <!-- Remove back button and keep other elements -->
+    <ng-container *ngIf="context !== 'home'">
+      <div class="page-title"></div>
+      <span class="separator">|</span>
+    </ng-container>
+
     <div class="left-buttons">
-      <button class="header-button" routerLink="/upload" routerLinkActive="active">
-        <i class="fas fa-upload"></i> Upload CSV
-      </button>
-      <button class="header-button" routerLink="/add" routerLinkActive="active">
-        <i class="fas fa-edit"></i> Manual Entry
-      </button>
-      <button class="header-button" routerLink="/viewdata" routerLinkActive="active">
-        <i class="fas fa-table"></i> View Data
-      </button>
+      <!-- Your context-based buttons here -->
     </div>
   </div>
-  <div class="right-button">
+
+  <div class="right-button" *ngIf="context === 'pnp'">
     <button class="header-button" (click)="downloadCSV()">
       <i class="fas fa-download"></i> Download CSV
     </button>

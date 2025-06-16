@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+
+import { Component, Input } from '@angular/core';
+
 import { ViewdataService } from '../services/viewdata.service'; // Adjust the path if needed
 
 @Component({
@@ -7,6 +9,7 @@ import { ViewdataService } from '../services/viewdata.service'; // Adjust the pa
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  @Input() context: 'home' | 'pnp' | 'effort' = 'home';
 
   constructor(private viewdataService: ViewdataService) {}
 

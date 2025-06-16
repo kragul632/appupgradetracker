@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ViewdataComponent } from './viewdata/viewdata.component';
 
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
@@ -15,6 +15,7 @@ import { AdddataComponent } from './adddata/adddata.component';
 import { EffortTableComponent } from './components/effort-table/effort-table.component';
 import { AddEffortComponent } from './components/add-effort/add-effort.component';
 import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -27,13 +28,15 @@ import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
     AdddataComponent,
     EffortTableComponent,
     AddEffortComponent,
-    UploadcsvComponent
+    UploadcsvComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
     
   ],
   providers: [],
