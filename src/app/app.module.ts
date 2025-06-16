@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ViewdataComponent } from './viewdata/viewdata.component';
 
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
@@ -34,6 +34,7 @@ import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
     
   ],
   providers: [],

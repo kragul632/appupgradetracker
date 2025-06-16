@@ -5,6 +5,7 @@ import { ViewdataComponent } from './viewdata/viewdata.component';
 import { UploadComponent } from './upload/upload.component';
 import { AdddataComponent } from './adddata/adddata.component';
 import { AddEffortComponent } from './components/add-effort/add-effort.component';
+import { EffortTableComponent } from './components/effort-table/effort-table.component';
 
 const routes: Routes = [
     { path: 'upload', component: UploadComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'edit', component: EditComponent },
     { path: 'add', component: AdddataComponent }, 
     {path: 'add-effort', component: AddEffortComponent},
+    { path: 'effort-table', component: EffortTableComponent },
     { path: '', redirectTo: '/viewdata', pathMatch: 'full' }
   ];
   

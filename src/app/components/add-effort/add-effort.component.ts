@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { EffortSubmissionService } from '../../services/effort-submission.service';
 
 @Component({
@@ -7,17 +8,7 @@ import { EffortSubmissionService } from '../../services/effort-submission.servic
   styleUrls: ['./add-effort.component.css']
 })
 export class AddEffortComponent {
-  effortPayload: {
-    applicationId: string;
-    appName: string;
-    resourceId: string;
-    resourceName: string;
-    roleName: string;
-    startDate: string;
-    endDate: string;
-    rate: number;
-    weeklyEfforts: { [key: string]: number };
-  } = {
+  effortPayload = {
     applicationId: '',
     appName: '',
     resourceId: '',
@@ -26,7 +17,7 @@ export class AddEffortComponent {
     startDate: '',
     endDate: '',
     rate: 0,
-    weeklyEfforts: {}
+    weeklyEfforts: {} as { [key: string]: number }
   };
 
   mondays: string[] = [];
@@ -39,11 +30,17 @@ export class AddEffortComponent {
     'Test Lead', 'Junior Tester', 'PBI Tester', 'Appian Lead', 'Sr Tester'
   ];
 
-  constructor(private effortService: EffortSubmissionService) {}
+  constructor(
+    private effortService: EffortSubmissionService,
+    private router: Router
+  ) {}
 
   submitEffort(): void {
     this.effortService.addEffort(this.effortPayload).subscribe({
-      next: () => alert('Effort submitted successfully!'),
+      next: () => {
+        alert('Effort submitted successfully!');
+        this.router.navigate(['/effort-table']);
+      },
       error: (err) => alert('Error submitting effort: ' + err.message)
     });
   }
