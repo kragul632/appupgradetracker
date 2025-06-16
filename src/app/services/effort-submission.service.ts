@@ -27,6 +27,17 @@ export class EffortSubmissionService {
     );
   }
 
+  
+
+  uploadCsv(file: File): Observable<any> {
+      const formData = new FormData();
+      formData.append('file', file);
+      return this.http.post(`${this.apiUrl}/upload-csv`, formData);
+    }
+    
+    
+  
+
   // Get resource name by ID
   getResourceName(resourceId: string): Observable<{ resourceId: string; resourceName: string }> {
     return this.http.get<{ resourceId: string; resourceName: string }>(
