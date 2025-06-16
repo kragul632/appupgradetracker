@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EffortSubmissionService } from '../../services/effort-submission.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-uploadcsv',
@@ -7,48 +8,40 @@ import { EffortSubmissionService } from '../../services/effort-submission.servic
   styleUrls: ['./uploadcsv.component.css']
 })
 export class UploadcsvComponent {
-  uploadResult: string = '';
-  submissions: any[] = [];
   selectedFile: File | null = null;
+  uploading = false;
+  uploadSuccess = false;
+  uploadError = false;
 
-  constructor(private effortService: EffortSubmissionService) {}
+  constructor(private effortService: EffortSubmissionService, private router: Router) {}
 
   onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
-    if (file && file.name.endsWith('.csv')) {
-      this.selectedFile = file;
-      this.uploadResult = '';
-    } else {
-      this.uploadResult = 'Please select a valid CSV file.';
-      this.selectedFile = null;
-    }
+    this.selectedFile = event.target.files[0];
   }
 
+  
   submitCsv(): void {
-    if (!this.selectedFile) {
-      this.uploadResult = 'No valid CSV file selected.';
-      return;
-    }
-
+    if (!this.selectedFile) return;
+  
+    this.uploading = true;
+    this.uploadSuccess = false;
+    this.uploadError = false;
+  
     this.effortService.uploadCsv(this.selectedFile).subscribe({
       next: (result) => {
-        this.uploadResult = `Upload successful. Inserted: ${result.Inserted.join(', ')}. Updated: ${result.Updated.join(', ')}`;
-        this.loadSubmissions();
+        this.uploadSuccess = true;
+        this.uploading = false;
+  
+        const message = `✅ Upload successful. Inserted: ${result.Inserted.join(', ')}. Updated: ${result.Updated.join(', ')}`;
+  
+        // ✅ Direct navigation
+        this.router.navigate(['/effort-table'], { state: { message } });
       },
       error: () => {
-        this.uploadResult = 'Upload failed.';
+        this.uploadError = true;
+        this.uploading = false;
       }
     });
   }
-
-  loadSubmissions(): void {
-    this.effortService.getAllEfforts().subscribe({
-      next: (data) => {
-        this.submissions = data;
-      },
-      error: () => {
-        this.uploadResult = 'Failed to load submissions.';
-      }
-    });
-  }
+  
 }

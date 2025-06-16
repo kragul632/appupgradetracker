@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EffortSubmissionService } from '../../services/effort-submission.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-effort-table',
@@ -9,31 +10,22 @@ import { EffortSubmissionService } from '../../services/effort-submission.servic
 export class EffortTableComponent implements OnInit {
   submissions: any[] = [];
   allMondays: string[] = [];
-  uploadResult: string = '';
+  uploadMessage: string = '';
 
-  constructor(private effortService: EffortSubmissionService) {}
+  constructor(
+    private effortService: EffortSubmissionService,
+    private router: Router
+  ) {}
+
+  
 
   ngOnInit(): void {
-    this.loadEfforts();
-  }
-
-  onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
-    if (!file || !file.name.endsWith('.csv')) {
-      this.uploadResult = 'Please select a valid CSV file.';
-      return;
+      const nav = this.router.getCurrentNavigation();
+      this.uploadMessage = nav?.extras?.state?.['message'] || '';
+      this.loadEfforts();
     }
-
-    this.effortService.uploadCsv(file).subscribe({
-      next: (result) => {
-        this.uploadResult = `Upload successful. Inserted: ${result.Inserted.join(', ')}. Updated: ${result.Updated.join(', ')}`;
-        this.loadEfforts();
-      },
-      error: () => {
-        this.uploadResult = 'Upload failed.';
-      }
-    });
-  }
+    
+  
 
   loadEfforts(): void {
     this.effortService.getAllEfforts().subscribe(data => {

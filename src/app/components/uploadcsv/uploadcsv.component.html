@@ -1,48 +1,13 @@
-<div class="container mt-4">
-  <h3>Upload CSV</h3>
-
-  <!-- File input with ID for reset -->
-  <input type="file" id="csvInput" (change)="onFileSelected($event)" accept=".csv" class="form-control mb-3" />
-
-  <!-- Upload button -->
-  <button class="btn btn-primary" (click)="submitCsv()">Upload</button>
-
-  <!-- Upload result message -->
-  <div class="alert mt-3" [ngClass]="{
-    'alert-success': uploadResult.startsWith('✅'),
-    'alert-danger': uploadResult.startsWith('❌'),
-    'alert-warning': uploadResult.startsWith('⚠️')
-  }" *ngIf="uploadResult">
-    {{ uploadResult }}
+<div class="upload-container">
+    <h2>Upload Effort CSV</h2>
+  
+    <div class="upload-controls">
+      <input type="file" (change)="onFileSelected($event)" accept=".csv" />
+      <button (click)="submitCsv()" [disabled]="!selectedFile || uploading">Upload</button>
+    </div>
+  
+    <div *ngIf="uploading" class="status uploading">Uploading file, please wait...</div>
+    <div *ngIf="uploadSuccess" class="status success">Upload successful! Redirecting to Effort Table...</div>
+    <div *ngIf="uploadError" class="status error">Upload failed. Please try again.</div>
   </div>
-
-  <!-- Table to display submissions -->
-  <table class="table table-bordered mt-4" *ngIf="submissions.length > 0">
-    <thead>
-      <tr>
-        <th>App ID</th>
-        <th>App Name</th>
-        <th>Resource ID</th>
-        <th>Resource Name</th>
-        <th>Role</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Total Hours</th>
-        <th>Total Cost</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let sub of submissions">
-        <td>{{ sub.applicationId }}</td>
-        <td>{{ sub.appName }}</td>
-        <td>{{ sub.resourceId }}</td>
-        <td>{{ sub.resourceName }}</td>
-        <td>{{ sub.roleName }}</td>
-        <td>{{ sub.startDate | date }}</td>
-        <td>{{ sub.endDate | date }}</td>
-        <td>{{ sub.totalEffortHours }}</td>
-        <td>{{ sub.totalCost }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  

@@ -15,6 +15,7 @@ import { AdddataComponent } from './adddata/adddata.component';
 import { EffortTableComponent } from './components/effort-table/effort-table.component';
 import { AddEffortComponent } from './components/add-effort/add-effort.component';
 import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
     AdddataComponent,
     EffortTableComponent,
     AddEffortComponent,
-    UploadcsvComponent
+    UploadcsvComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
