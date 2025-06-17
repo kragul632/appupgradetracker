@@ -1,0 +1,65 @@
+<div class="effort-container">
+    <div class="input-card">
+      <div class="card-header">
+        <button class="back-btn" routerLink="/home">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <h2 class="card-title">Effort Submissions by Application</h2>
+      </div>
+  
+      <div class="input-group">
+        <label for="appSelect">Select Application:</label>
+        <select id="appSelect" [(ngModel)]="applicationId">
+          <option value="" disabled selected>Select an application</option>
+          <option *ngFor="let app of applications" [value]="app.applicationId">
+            {{ app.applicationId }} - {{ app.appName }}
+          </option>
+        </select>
+        <button (click)="fetchEfforts()">
+          <i class="fas fa-search"></i> Fetch
+        </button>
+      </div>
+  
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    </div>
+  
+    <div class="table-card" *ngIf="efforts.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Application ID</th>
+            <th>App Name</th>
+            <th>Resource ID</th>
+            <th>Resource Name</th>
+            <th>Role Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th *ngFor="let date of uniqueDates">{{ date }}</th>
+            <th>Rate</th>
+            <th>Total Effort Hours</th>
+            <th>Total Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let effort of efforts">
+            <td>{{ effort.id }}</td>
+            <td>{{ effort.applicationId }}</td>
+            <td>{{ effort.appName }}</td>
+            <td>{{ effort.resourceId }}</td>
+            <td>{{ effort.resourceName }}</td>
+            <td>{{ effort.roleName }}</td>
+            <td>{{ effort.startDate | date }}</td>
+            <td>{{ effort.endDate | date }}</td>
+            <td *ngFor="let date of uniqueDates">
+              {{ getEffortForDate(effort, date) }}
+            </td>
+            <td>{{ effort.rate }}</td>
+            <td>{{ effort.totalEffortHours }}</td>
+            <td>{{ effort.totalCost }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

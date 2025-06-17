@@ -4,8 +4,15 @@
     <button class="home-btn btn-pnp" routerLink="/viewdata">
       <i class="fas fa-tasks"></i> Application Upgrades/PNP Table
     </button>
-    <button class="home-btn btn-effort" routerLink="/effort-table">
-      <i class="fas fa-chart-line"></i> RL/Effort Table
-    </button>
+
+    <div class="dropdown">
+      <button class="home-btn btn-effort dropdown-toggle">
+        <i class="fas fa-chart-line"></i> RL/Effort Options
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/effort-table">RL/Effort Table</a>
+        <a class="dropdown-item" routerLink="/view-application-effort">Effort by Application</a>
+      </div>
+    </div>
   </div>
 </div>

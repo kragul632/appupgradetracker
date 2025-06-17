@@ -28,7 +28,6 @@
           <th>Rate</th>
           <th>Total Effort Hours</th>
           <th>Total Cost</th>
-          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -44,12 +43,7 @@
           <td>{{ sub.rate }}</td>
           <td>{{ sub.totalEffortHours }}</td>
           <td>{{ sub.totalCost }}</td>
-          <td>
-            <span [ngClass]="{
-              'status-blocked': sub.status === 'BLOCKED',
-              'status-in-progress': sub.status === 'In Progress'
-            }">{{ sub.status }}</span>
-          </td>
+          
         </tr>
       </tbody>
     </table>

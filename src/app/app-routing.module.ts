@@ -8,6 +8,7 @@ import { AddEffortComponent } from './components/add-effort/add-effort.component
 import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
 import { EffortTableComponent } from './components/effort-table/effort-table.component';
 import { HomeComponent } from './components/home/home.component';
+import { ViewApplicationEffortComponent } from './components/view-application-effort/view-application-effort.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/viewdata', pathMatch: 'full' },
   { path: 'upload-csv', component: UploadcsvComponent },
   { path: 'effort-table', component: EffortTableComponent },
+  {path: 'view-application-effort', component: ViewApplicationEffortComponent},
 
   ];
   

@@ -16,6 +16,7 @@ import { EffortTableComponent } from './components/effort-table/effort-table.com
 import { AddEffortComponent } from './components/add-effort/add-effort.component';
 import { UploadcsvComponent } from './components/uploadcsv/uploadcsv.component';
 import { HomeComponent } from './components/home/home.component';
+import { ViewApplicationEffortComponent } from './components/view-application-effort/view-application-effort.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HomeComponent } from './components/home/home.component';
     EffortTableComponent,
     AddEffortComponent,
     UploadcsvComponent,
-    HomeComponent
+    HomeComponent,
+    ViewApplicationEffortComponent
   ],
   imports: [
     BrowserModule,

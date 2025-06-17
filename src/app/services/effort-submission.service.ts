@@ -15,10 +15,20 @@ export class EffortSubmissionService {
     return this.http.post(this.apiUrl, payload);
   }
 
-  // Get all efforts (if needed)
+  // Get all efforts
   getAllEfforts(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  // Get efforts by application ID
+  getEffortsByApplicationId(applicationId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/by-application/${applicationId}`);
+  }
+
+  getAllApplications(): Observable<{ applicationId: string; appName: string }[]> {
+    return this.http.get<{ applicationId: string; appName: string }[]>(`${this.apiUrl}/applications`);
+  }
+  
 
   // Get application name by ID
   getApplicationName(appId: string): Observable<{ applicationId: string; appName: string }> {
@@ -27,16 +37,12 @@ export class EffortSubmissionService {
     );
   }
 
-  
-
+  // Upload CSV
   uploadCsv(file: File): Observable<any> {
-      const formData = new FormData();
-      formData.append('file', file);
-      return this.http.post(`${this.apiUrl}/upload-csv`, formData);
-    }
-    
-    
-  
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.apiUrl}/upload-csv`, formData);
+  }
 
   // Get resource name by ID
   getResourceName(resourceId: string): Observable<{ resourceId: string; resourceName: string }> {

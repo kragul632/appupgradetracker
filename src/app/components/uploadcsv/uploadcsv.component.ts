@@ -32,10 +32,15 @@ export class UploadcsvComponent {
         this.uploadSuccess = true;
         this.uploading = false;
   
-        const message = `✅ Upload successful. Inserted: ${result.Inserted.join(', ')}. Updated: ${result.Updated.join(', ')}`;
+        const inserted = result?.Inserted ?? [];
+        const updated = result?.Updated ?? [];
   
-        // ✅ Direct navigation
-        this.router.navigate(['/effort-table'], { state: { message } });
+        const message = `✅ Upload successful. Inserted: ${inserted.join(', ')}. Updated: ${updated.join(', ')}`;
+  
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/effort-table']);
+        });
+        
       },
       error: () => {
         this.uploadError = true;
@@ -43,5 +48,6 @@ export class UploadcsvComponent {
       }
     });
   }
+  
   
 }

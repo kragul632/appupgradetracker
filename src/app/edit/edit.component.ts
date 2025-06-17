@@ -62,7 +62,7 @@ export class EditComponent {
       this.viewdataService.updateApplicationUpgrade(this.item.apmId, this.item).subscribe({
         next: () => {
           alert('Update successful!');
-          this.router.navigate(['/']);
+          this.router.navigate(['/viewdata']);
         },
         error: (err) => {
           console.error('Update failed:', err);
