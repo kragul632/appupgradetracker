@@ -8,7 +8,7 @@ import { EffortSubmissionService } from '../../services/effort-submission.servic
 })
 export class ViewApplicationEffortComponent {
   applicationId: string = '';
-  applications: {applicationId: string, appName: string}[] = [];
+  applications: { applicationId: string, appName: string }[] = [];
   efforts: any[] = [];
   uniqueDates: string[] = [];
   errorMessage: string = '';
@@ -16,12 +16,10 @@ export class ViewApplicationEffortComponent {
   constructor(private effortService: EffortSubmissionService) {}
 
   ngOnInit(): void {
-    
-this.effortService.getAllApplications().subscribe({
-      next: (apps) => this.applications = apps,
-      error: () => this.errorMessage = 'Failed to load applications.'
-    });
-  
+    this.effortService.getAllApplications().subscribe({
+      next: (apps) => this.applications = apps,
+      error: () => this.errorMessage = 'Failed to load applications.'
+    });
   }
 
   fetchEfforts(): void {
@@ -48,17 +46,29 @@ this.effortService.getAllApplications().subscribe({
     const dateSet = new Set<string>();
     this.efforts.forEach(effort => {
       effort.weeklyEfforts.forEach((we: any) => {
-        const dateStr = new Date(we.weekStartDate).toISOString().split('T')[0];
-        dateSet.add(dateStr);
+        const date = new Date(we.weekStartDate);
+        const formattedDate = this.formatDate(date);
+        dateSet.add(formattedDate);
       });
     });
-    this.uniqueDates = Array.from(dateSet).sort();
+    this.uniqueDates = Array.from(dateSet).sort((a, b) => {
+      const parse = (d: string) => new Date(d.split('-').reverse().join('-'));
+      return parse(a).getTime() - parse(b).getTime();
+    });
   }
 
-  getEffortForDate(effort: any, date: string): number {
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('default', { month: 'short' }).toLowerCase();
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  getEffortForDate(effort: any, formattedDate: string): number {
     const match = effort.weeklyEfforts.find((we: any) => {
-      const weDate = new Date(we.weekStartDate).toISOString().split('T')[0];
-      return weDate === date;
+      const date = new Date(we.weekStartDate);
+      const formatted = this.formatDate(date);
+      return formatted === formattedDate;
     });
     return match ? match.effortHours : 0;
   }
