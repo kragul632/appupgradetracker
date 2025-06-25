@@ -57,4 +57,19 @@ export class EffortSubmissionService {
       `${this.apiUrl}/role/${roleName}`
     );
   }
+
+  updateEffort(id: number, payload: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, payload);
+  }  
+
+  getResourcesByApplicationId(applicationId: string): Observable<{ resourceId: string; resourceName: string }[]> {
+    return this.http.get<{ resourceId: string; resourceName: string }[]>(
+      `${this.apiUrl}/resources-by-application/${applicationId}`
+    );
+  }
+  
+  getAllRoles(): Observable<{ roleName: string }[]> {
+    return this.http.get<{ roleName: string }[]>(`${this.apiUrl}/roles`);
+  }
+  
 }

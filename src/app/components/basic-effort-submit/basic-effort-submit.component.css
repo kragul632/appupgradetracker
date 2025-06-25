@@ -1,0 +1,60 @@
+.basic-effort-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .basic-effort-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .basic-effort-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .basic-effort-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .basic-effort-form input {
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .basic-effort-form button {
+    padding: 10px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .basic-effort-form button:hover {
+    background-color: #005a9e;
+  }
+  
+  .basic-effort-form .error {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px; /* Adds spacing between buttons */
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    flex: 1; /* Makes both buttons equal width */
+  }
+  

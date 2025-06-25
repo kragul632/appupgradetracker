@@ -1,0 +1,86 @@
+<div style="margin-bottom: 20px;">
+    <button (click)="navigateToAddNew()">Add New</button>
+  </div>
+  
+  <div>
+    <label for="appSelect">Select Application:</label>
+    <select id="appSelect" [(ngModel)]="selectedAppId" (change)="onAppSelect()">
+      <option value="" disabled selected>Select an application</option>
+      <option *ngFor="let app of applications" [value]="app.applicationId">
+        {{ app.appName }} ({{ app.applicationId }})
+      </option>
+    </select>
+  </div>
+  
+  <div *ngIf="effortData.length > 0">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Application ID</th>
+          <th>App Name</th>
+          <th>Resource Name</th>
+          <th>Role</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Rate</th>
+          <th>Total Effort</th>
+          <th>Total Cost</th>
+          <th *ngFor="let date of allWeekDates">
+            {{ date | date: 'dd MMM yyyy' }}
+          </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let submission of effortData; let i = index">
+          <!-- Existing Data Row -->
+          <tr>
+            <td>{{ submission.id }}</td>
+            <td>{{ submission.applicationId }}</td>
+            <td>{{ submission.appName }}</td>
+            <td>{{ submission.resourceName || '-' }}</td>
+            <td>{{ submission.roleName || '-' }}</td>
+            <td>{{ submission.startDate | date: 'dd MMM yyyy' }}</td>
+            <td>{{ submission.endDate | date: 'dd MMM yyyy' }}</td>
+            <td>{{ submission.rate }}</td>
+            <td>{{ submission.totalEffortHours }}</td>
+            <td>{{ submission.totalCost }}</td>
+            <td *ngFor="let date of allWeekDates">
+              {{ getEffortHours(submission, date) }}
+            </td>
+            <td>
+              <button (click)="activeRowIndex = i; setDefaultDates(submission)">Add Entry</button>
+            </td>
+          </tr>
+  
+          <!-- Inline Update Row -->
+          <tr *ngIf="activeRowIndex === i">
+            <td colspan="3">Update Resource</td>
+            <td><input [(ngModel)]="newRowEntry.resourceName" placeholder="Resource Name" /></td>
+            <td><input [(ngModel)]="newRowEntry.roleName" placeholder="Role" /></td>
+            <td><input type="date" [(ngModel)]="newRowEntry.startDate" disabled /></td>
+            <td><input type="date" [(ngModel)]="newRowEntry.endDate" disabled /></td>
+            <td><input type="number" [(ngModel)]="newRowEntry.rate" placeholder="Rate" /></td>
+            <td colspan="2">Auto</td>
+            <td *ngFor="let date of allWeekDates">
+              <input
+                type="number"
+                min="0"
+                [(ngModel)]="newRowEntry.weeklyEfforts[date]"
+                style="width: 60px"
+              />
+            </td>
+            <td>
+              <button (click)="submitRowEntry(submission)">Submit</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+  

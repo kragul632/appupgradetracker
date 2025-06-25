@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #effortForm="ngForm">
+    <label>Application ID:</label>
+    <input type="text" name="applicationId" [(ngModel)]="effort.applicationId" required />
+  
+    <label>App Name:</label>
+    <input type="text" name="appName" [(ngModel)]="effort.appName" required />
+  
+    <label>Start Date:</label>
+    <input type="date" name="startDate" [(ngModel)]="effort.startDate" required />
+  
+    <label>End Date:</label>
+    <input type="date" name="endDate" [(ngModel)]="effort.endDate" required />
+  
+    <button type="submit" [disabled]="effortForm.invalid">Submit</button>
+  </form>
+  

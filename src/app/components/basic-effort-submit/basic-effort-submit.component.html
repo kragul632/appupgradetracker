@@ -1,0 +1,26 @@
+<div class="basic-effort-form">
+  <h2>Edit Effort Submission</h2>
+
+  <form (ngSubmit)="onSubmit()" #effortForm="ngForm">
+    <input type="text" [(ngModel)]="effortData.applicationId" name="applicationId" required readonly />
+    <input type="text" [(ngModel)]="effortData.appName" name="appName" required readonly />
+    
+
+    <label>Start Date:</label>
+    <input type="date" [(ngModel)]="effortData.startDate" name="startDate" required />
+
+    <label>End Date:</label>
+    <input type="date" [(ngModel)]="effortData.endDate" name="endDate" required />
+
+    <div class="button-group">
+      <button type="submit" [disabled]="effortForm.invalid">Update</button>
+      <button (click)="goBack()" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+    </div>
+    
+    
+  </form>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</div>

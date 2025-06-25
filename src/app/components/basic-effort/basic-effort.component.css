@@ -1,0 +1,118 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: linear-gradient(to right, #f0f2f5, #e0eafc);
+    padding: 20px;
+  }
+  
+  .effort-card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .effort-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  .effort-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Sundays Display */
+  .sundays-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .sundays-container h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .sundays-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .sunday-cell {
+    background-color: #f8f9fa;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .sunday-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+    background-color: #e6f0ff;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px; /* Adds spacing between buttons */
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    flex: 1; /* Makes both buttons equal width */
+  }
+  
